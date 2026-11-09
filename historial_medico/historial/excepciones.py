@@ -15,3 +15,7 @@ class EntidadDuplicadaError(HistorialError):
 
 class EntidadNoEncontradaError(HistorialError):
     """No existe una entidad con la clave indicada."""
+
+
+class ReporteError(HistorialError):
+    """Falla al generar o escribir el reporte PDF."""
