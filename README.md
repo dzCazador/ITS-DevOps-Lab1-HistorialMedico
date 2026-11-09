@@ -14,6 +14,7 @@ Mini sistema de consola en **Python** para que médicos registren pacientes y el
 
 - [Funcionalidades](#-funcionalidades)
 - [Principios de POO aplicados](#-principios-de-poo-aplicados)
+- [Diagrama de clases](#-diagrama-de-clases)
 - [Estructura](#-estructura)
 - [Requisitos](#️-requisitos)
 - [Instalación y ejecución](#-instalación-y-ejecución)
@@ -39,6 +40,87 @@ Mini sistema de consola en **Python** para que médicos registren pacientes y el
 | Herencia | `personas.py`, `atenciones.py` | `Medico(Persona)`, `Urgencia(Atencion)` |
 | Polimorfismo | `descripcion()`, `costo()`, `tipo()` | Cada tipo de atención calcula su costo distinto |
 | Encapsulamiento | Todas las clases | Atributos `__privados` con `@property` (getter/setter) y validación |
+
+## 📐 Diagrama de clases
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Persona {
+        <<abstract>>
+        -str nombre
+        -str dni
+        +descripcion() str*
+    }
+    class Medico {
+        -str matricula
+        -str especialidad
+        +descripcion() str
+    }
+    class Paciente {
+        -str fecha_nacimiento
+        +descripcion() str
+    }
+
+    class Atencion {
+        <<abstract>>
+        -Paciente paciente
+        -Medico medico
+        -str fecha
+        +tipo() str*
+        +costo() float*
+        +descripcion() str
+    }
+    class AtencionConsulta {
+        +tipo() str
+        +costo() float
+    }
+    class Urgencia {
+        +tipo() str
+        +costo() float
+    }
+    class Control {
+        +tipo() str
+        +costo() float
+    }
+
+    class RepositorioHistorial {
+        -list medicos
+        -list pacientes
+        -list atenciones
+        +agregar_medico(medico)
+        +agregar_paciente(paciente)
+        +registrar_atencion(dni, matricula, fecha, tipo) Atencion
+        +historial_paciente(dni) list
+        +facturacion_medico(matricula) float
+    }
+
+    class HistorialError {
+        <<exception>>
+    }
+    class DatoInvalidoError
+    class EntidadDuplicadaError
+    class EntidadNoEncontradaError
+    class ReporteError
+
+    Persona <|-- Medico
+    Persona <|-- Paciente
+    Atencion <|-- AtencionConsulta
+    Atencion <|-- Urgencia
+    Atencion <|-- Control
+    Atencion --> Paciente : paciente
+    Atencion --> Medico : medico
+    RepositorioHistorial o-- Persona : almacena
+    RepositorioHistorial o-- Atencion : almacena
+    HistorialError <|-- DatoInvalidoError
+    HistorialError <|-- EntidadDuplicadaError
+    HistorialError <|-- EntidadNoEncontradaError
+    HistorialError <|-- ReporteError
+```
+
+> [!NOTE]
+> `-` indica atributo privado (accedido por `@property`), `+` método público, `*` método abstracto.
 
 ## 📁 Estructura
 
