@@ -1,16 +1,35 @@
 # 🏥 Sistema de Historial Médico
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-pytest-0A9EDC?logo=pytest&logoColor=white)
+![PDF](https://img.shields.io/badge/PDF-fpdf2-E34F26)
+![License](https://img.shields.io/badge/licencia-educativa-lightgrey)
+
 Mini sistema de consola en **Python** para que médicos registren pacientes y el historial de sus atenciones. Trabajo Práctico Integrador Final – Laboratorio I (ITS Cipolletti).
 
+> [!IMPORTANT]
 > Los datos viven **en memoria** (listas). Al cerrar la aplicación se pierden, como pide la consigna.
+
+## 📑 Índice
+
+- [Funcionalidades](#-funcionalidades)
+- [Principios de POO aplicados](#-principios-de-poo-aplicados)
+- [Estructura](#-estructura)
+- [Requisitos](#️-requisitos)
+- [Instalación y ejecución](#-instalación-y-ejecución)
+- [Pruebas](#-pruebas)
+- [Uso del menú](#️-uso-del-menú)
+- [Tarifas](#-tarifas)
+- [Control de versiones y gestión del proyecto](#-control-de-versiones-y-gestión-del-proyecto)
+- [Licencia](#-licencia)
 
 ## ✨ Funcionalidades
 
-- Registrar médicos y pacientes (con validación de DNI, matrícula y fechas).
-- Registrar atenciones de tres tipos: consulta, urgencia y control.
-- Ver el historial clínico de un paciente, ordenado por fecha.
-- Calcular la facturación total de un médico.
-- Generar un reporte en PDF con médicos, pacientes y atenciones.
+- [x] Registrar médicos y pacientes (con validación de DNI, matrícula y fechas).
+- [x] Registrar atenciones de tres tipos: consulta, urgencia y control.
+- [x] Ver el historial clínico de un paciente, ordenado por fecha.
+- [x] Calcular la facturación total de un médico.
+- [x] Generar un reporte en PDF con médicos, pacientes y atenciones.
 
 ## 🧩 Principios de POO aplicados
 
@@ -22,6 +41,9 @@ Mini sistema de consola en **Python** para que médicos registren pacientes y el
 | Encapsulamiento | Todas las clases | Atributos `__privados` con `@property` (getter/setter) y validación |
 
 ## 📁 Estructura
+
+<details>
+<summary>Ver árbol de carpetas</summary>
 
 ```text
 TP Final Entregar/
@@ -41,10 +63,12 @@ TP Final Entregar/
     └── pytest.ini
 ```
 
+</details>
+
 ## ⚙️ Requisitos
 
-- Python 3.10 o superior
-- Git (opcional, para control de versiones)
+- [x] Python 3.10 o superior
+- [ ] Git (opcional, para control de versiones)
 
 ## 🚀 Instalación y ejecución
 
@@ -62,6 +86,9 @@ pip install -r requirements.txt
 # 3. Ejecutar la aplicación
 python main.py
 ```
+
+> [!TIP]
+> Si PowerShell bloquea la activación, ejecutá una vez: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
 
 ## 🧪 Pruebas
 
@@ -81,7 +108,10 @@ pytest -v
                              0. Salir
 ```
 
-Fechas en formato `AAAA-MM-DD`. Tipos de atención: `consulta`, `urgencia`, `control`. La opción 8 guarda `reporte.pdf` en la carpeta desde la que se ejecuta el programa.
+Fechas en formato `AAAA-MM-DD`. Tipos de atención: `consulta`, `urgencia`, `control`.
+
+> [!NOTE]
+> La opción 8 guarda `reporte.pdf` en la carpeta desde la que se ejecuta el programa. Los PDF están excluidos en `.gitignore`.
 
 ## 💰 Tarifas
 
@@ -90,6 +120,15 @@ Fechas en formato `AAAA-MM-DD`. Tipos de atención: `consulta`, `urgencia`, `con
 | Consulta | $12.000 |
 | Urgencia | $18.000 |
 | Control | $6.000 |
+
+## 🔀 Control de versiones y gestión del proyecto
+
+- Ramas: `main` (versión entregable) y `dev/cristian` (desarrollo).
+- Commits en [Conventional Commits](https://www.conventionalcommits.org/es/v1.0.0/), referenciando el issue con `(#N)`.
+- Tablero: [GitHub Projects](https://github.com/users/dzCazador/projects/3) con columnas **Pendiente**, **En curso** y **Finalizada**.
+
+> [!WARNING]
+> No trabajar directamente en `main`. Todo el desarrollo ocurre en `dev/cristian` y se integra a `main` con `git merge --no-ff`.
 
 ## 📝 Licencia
 
